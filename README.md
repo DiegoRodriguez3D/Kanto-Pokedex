@@ -2,7 +2,8 @@
 
 <div align="center">
 
-<img width="1914" height="1276" alt="image" src="https://github.com/user-attachments/assets/c72dfc39-4062-4480-94e4-39c8e1fd1172" />
+<img width="1658" height="1240" alt="image" src="https://github.com/user-attachments/assets/c0dd0ecf-fe90-4b92-ab4b-f7efe5546072" />
+
 
 
 **A modern, responsive Pokédex web application for the original 151 Pokémon**
@@ -41,42 +42,6 @@ Kanto Pokédex Modern is a full-stack web application that showcases all 151 ori
 | **Styling** | Tailwind CSS |
 | **HTTP Client** | HTTPX (Async) |
 | **Data Source** | [PokéAPI](https://pokeapi.co/) |
-
-### 🚀 Getting Started
-
-#### Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- npm or pnpm
-
-#### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/kanto-pokedex.git
-   cd kanto-pokedex
-   ```
-
-2. **Set up the Backend**
-   ```bash
-   cd backend
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   uvicorn main:app --reload --port 8000
-   ```
-
-3. **Set up the Frontend** (in a new terminal)
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-
-4. **Open your browser**
-   
-   Navigate to [http://localhost:5173](http://localhost:5173)
 
 ### 📁 Project Structure
 
@@ -139,42 +104,6 @@ Kanto Pokédex Modern es una aplicación web full-stack que muestra los 151 Pok�
 | **Cliente HTTP** | HTTPX (Async) |
 | **Fuente de Datos** | [PokéAPI](https://pokeapi.co/) |
 
-### 🚀 Comenzar
-
-#### Requisitos
-
-- Python 3.11+
-- Node.js 18+
-- npm o pnpm
-
-#### Instalación
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/yourusername/kanto-pokedex.git
-   cd kanto-pokedex
-   ```
-
-2. **Configurar el Backend**
-   ```bash
-   cd backend
-   python3 -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   uvicorn main:app --reload --port 8000
-   ```
-
-3. **Configurar el Frontend** (en una nueva terminal)
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-
-4. **Abrir el navegador**
-   
-   Navega a [http://localhost:5173](http://localhost:5173)
-
 ### 📁 Estructura del Proyecto
 
 ```
@@ -209,22 +138,8 @@ kanto-pokedex/
 
 ## � Deployment / Despliegue
 
-### Backend → Render
-
-1. Create a new **Web Service** on [Render](https://render.com)
-2. Connect your repository
-3. Set **Root Directory** to `backend`
-4. Build Command: `pip install -r requirements.txt`
-5. Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-6. Add environment variable: `FRONTEND_URL` = your Vercel frontend URL
-
-### Frontend → Vercel
-
-1. Import your project on [Vercel](https://vercel.com)
-2. Set **Root Directory** to `frontend`
-3. Add environment variable: `VITE_API_URL` = your Render backend URL + `/api/v1`
-   - Example: `https://your-api.onrender.com/api/v1`
-
+### Backend → [Render](https://kanto-pokedex-api-xtpp.onrender.com/docs)
+### Frontend → [Vercel](https://kanto-pokedex-jade.vercel.app)
 ---
 
 ## �📄 License / Licencia
