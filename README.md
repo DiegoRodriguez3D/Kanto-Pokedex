@@ -1,8 +1,9 @@
-# Kanto Pokédex Modern
+# Kanto Pokédex
 
 <div align="center">
 
-![Kanto Pokédex](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png)
+<img width="1914" height="1276" alt="image" src="https://github.com/user-attachments/assets/c72dfc39-4062-4480-94e4-39c8e1fd1172" />
+
 
 **A modern, responsive Pokédex web application for the original 151 Pokémon**
 
