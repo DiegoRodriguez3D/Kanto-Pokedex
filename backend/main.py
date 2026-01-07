@@ -4,6 +4,7 @@ Kanto Pokedex - FastAPI Backend
 A Backend for Frontend (BFF) that serves as an intermediary between
 the SvelteKit frontend and the PokéAPI.
 """
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -29,15 +30,21 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Configure CORS for frontend access
+# CORS origins: production URL from env + localhost for development
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:4173",
+]
+
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    allowed_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",  # SvelteKit dev server
-        "http://localhost:4173",  # SvelteKit preview
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:4173",
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

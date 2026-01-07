@@ -207,7 +207,27 @@ kanto-pokedex/
 
 ---
 
-## 📄 License / Licencia
+## � Deployment / Despliegue
+
+### Backend → Render
+
+1. Create a new **Web Service** on [Render](https://render.com)
+2. Connect your repository
+3. Set **Root Directory** to `backend`
+4. Build Command: `pip install -r requirements.txt`
+5. Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+6. Add environment variable: `FRONTEND_URL` = your Vercel frontend URL
+
+### Frontend → Vercel
+
+1. Import your project on [Vercel](https://vercel.com)
+2. Set **Root Directory** to `frontend`
+3. Add environment variable: `VITE_API_URL` = your Render backend URL + `/api/v1`
+   - Example: `https://your-api.onrender.com/api/v1`
+
+---
+
+## �📄 License / Licencia
 
 MIT License - See [LICENSE](LICENSE) for details.
 
