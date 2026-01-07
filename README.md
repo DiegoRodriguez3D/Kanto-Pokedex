@@ -1,0 +1,211 @@
+# Kanto Pokédex Modern
+
+<div align="center">
+
+![Kanto Pokédex](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png)
+
+**A modern, responsive Pokédex web application for the original 151 Pokémon**
+
+[English](#english) | [Español](#español)
+
+</div>
+
+---
+
+## English
+
+### 🎯 Overview
+
+Kanto Pokédex Modern is a full-stack web application that showcases all 151 original Pokémon from the Kanto region. Built with modern technologies and a stunning UI/UX design, it offers a premium experience for exploring Pokémon data.
+
+### ✨ Features
+
+- **📱 Responsive Design** - Optimized for mobile, tablet, and desktop
+- **🌙 Dark/Light Theme** - Toggle between themes from any page, with system preference detection
+- **🔍 Dynamic Search** - Real-time filtering by name, ID, or type
+- **🎨 Type-Based Colors** - Cards and backgrounds adapt to Pokémon types
+- **📊 Visual Stats** - Animated progress bars with color coding
+- **💫 Glassmorphism UI** - Modern frosted glass effect on detail pages
+- **⚡ Fast Performance** - Server-side caching prevents API overload
+- **🖼️ High-Quality Images** - Official artwork from PokéAPI
+
+### 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Backend** | FastAPI (Python 3.11+) |
+| **Frontend** | SvelteKit (Svelte 5) |
+| **Styling** | Tailwind CSS |
+| **HTTP Client** | HTTPX (Async) |
+| **Data Source** | [PokéAPI](https://pokeapi.co/) |
+
+### 🚀 Getting Started
+
+#### Prerequisites
+
+- Python 3.11+
+- Node.js 18+
+- npm or pnpm
+
+#### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/kanto-pokedex.git
+   cd kanto-pokedex
+   ```
+
+2. **Set up the Backend**
+   ```bash
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   uvicorn main:app --reload --port 8000
+   ```
+
+3. **Set up the Frontend** (in a new terminal)
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to [http://localhost:5173](http://localhost:5173)
+
+### 📁 Project Structure
+
+```
+kanto-pokedex/
+├── backend/
+│   ├── main.py              # FastAPI entry point
+│   ├── api/v1/              # API routes
+│   ├── models/              # Pydantic models
+│   └── services/            # Business logic & caching
+│
+└── frontend/
+    ├── src/
+    │   ├── routes/          # SvelteKit pages
+    │   └── lib/
+    │       ├── components/  # Reusable components
+    │       ├── api.ts       # API client
+    │       └── theme.svelte.ts  # Theme management
+    └── static/
+```
+
+### 🎮 Usage
+
+- **Browse** - Scroll through the grid to see all 151 Pokémon
+- **Search** - Type in the search bar to filter by name, ID, or type
+- **View Details** - Click any card to see full stats and description
+- **Navigate** - Use Previous/Next buttons to browse between Pokémon
+- **Toggle Theme** - Click the sun/moon icon to switch themes
+
+---
+
+## Español
+
+### 🎯 Descripción
+
+Kanto Pokédex Modern es una aplicación web full-stack que muestra los 151 Pokémon originales de la región de Kanto. Construida con tecnologías modernas y un diseño UI/UX impresionante, ofrece una experiencia premium para explorar datos Pokémon.
+
+### ✨ Características
+
+- **📱 Diseño Responsivo** - Optimizado para móvil, tablet y escritorio
+- **🌙 Tema Oscuro/Claro** - Alterna entre temas desde cualquier página, con detección de preferencia del sistema
+- **🔍 Búsqueda Dinámica** - Filtrado en tiempo real por nombre, ID o tipo
+- **🎨 Colores por Tipo** - Las tarjetas y fondos se adaptan a los tipos de Pokémon
+- **📊 Estadísticas Visuales** - Barras de progreso animadas con código de colores
+- **💫 Interfaz Glassmorphism** - Efecto moderno de vidrio esmerilado en páginas de detalle
+- **⚡ Alto Rendimiento** - Caché del servidor previene sobrecarga de la API
+- **🖼️ Imágenes de Alta Calidad** - Arte oficial de PokéAPI
+
+### 🛠️ Stack Tecnológico
+
+| Componente | Tecnología |
+|------------|------------|
+| **Backend** | FastAPI (Python 3.11+) |
+| **Frontend** | SvelteKit (Svelte 5) |
+| **Estilos** | Tailwind CSS |
+| **Cliente HTTP** | HTTPX (Async) |
+| **Fuente de Datos** | [PokéAPI](https://pokeapi.co/) |
+
+### 🚀 Comenzar
+
+#### Requisitos
+
+- Python 3.11+
+- Node.js 18+
+- npm o pnpm
+
+#### Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/yourusername/kanto-pokedex.git
+   cd kanto-pokedex
+   ```
+
+2. **Configurar el Backend**
+   ```bash
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate  # En Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   uvicorn main:app --reload --port 8000
+   ```
+
+3. **Configurar el Frontend** (en una nueva terminal)
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+4. **Abrir el navegador**
+   
+   Navega a [http://localhost:5173](http://localhost:5173)
+
+### 📁 Estructura del Proyecto
+
+```
+kanto-pokedex/
+├── backend/
+│   ├── main.py              # Punto de entrada FastAPI
+│   ├── api/v1/              # Rutas de la API
+│   ├── models/              # Modelos Pydantic
+│   └── services/            # Lógica de negocio y caché
+│
+└── frontend/
+    ├── src/
+    │   ├── routes/          # Páginas SvelteKit
+    │   └── lib/
+    │       ├── components/  # Componentes reutilizables
+    │       ├── api.ts       # Cliente API
+    │       └── theme.svelte.ts  # Gestión de temas
+    └── static/
+```
+
+### 🎮 Uso
+
+- **Explorar** - Desplázate por la cuadrícula para ver los 151 Pokémon
+- **Buscar** - Escribe en la barra de búsqueda para filtrar por nombre, ID o tipo
+- **Ver Detalles** - Haz clic en cualquier tarjeta para ver estadísticas completas y descripción
+- **Navegar** - Usa los botones Anterior/Siguiente para navegar entre Pokémon
+- **Cambiar Tema** - Haz clic en el icono de sol/luna para cambiar el tema
+
+---
+
+## 📄 License / Licencia
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+
+**Made with ❤️ using [PokéAPI](https://pokeapi.co/)**
+
+</div>

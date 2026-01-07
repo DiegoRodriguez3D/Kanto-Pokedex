@@ -1,6 +1,7 @@
 <script lang="ts">
     import TypeBadge from "$lib/components/TypeBadge.svelte";
     import StatBar from "$lib/components/StatBar.svelte";
+    import ThemeToggle from "$lib/components/ThemeToggle.svelte";
     import { getTypeGradient } from "$lib/typeColors";
     import type { PokemonDetail } from "$lib/api";
 
@@ -68,6 +69,7 @@
                 </svg>
                 <span>Back</span>
             </a>
+            <ThemeToggle />
         </nav>
 
         <main class="content">
@@ -179,6 +181,9 @@
         max-width: 800px;
         margin: 0 auto;
         padding-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .back-link {
@@ -237,6 +242,10 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
+    :global(.dark) .info-card {
+        background: rgba(30, 41, 59, 0.9);
+    }
+
     .info-header {
         display: flex;
         justify-content: space-between;
@@ -252,10 +261,18 @@
         text-transform: capitalize;
     }
 
+    :global(.dark) .pokemon-name {
+        color: #f1f5f9;
+    }
+
     .pokemon-id {
         font-size: 1.25rem;
         font-weight: 600;
         color: #64748b;
+    }
+
+    :global(.dark) .pokemon-id {
+        color: #94a3b8;
     }
 
     .types-row {
@@ -275,6 +292,10 @@
         margin-bottom: 1.5rem;
     }
 
+    :global(.dark) .physical-stats {
+        background: rgba(15, 23, 42, 0.5);
+    }
+
     .physical-stat {
         display: flex;
         flex-direction: column;
@@ -288,9 +309,17 @@
         color: #1e293b;
     }
 
+    :global(.dark) .physical-value {
+        color: #f1f5f9;
+    }
+
     .physical-label {
         font-size: 0.875rem;
         color: #64748b;
+    }
+
+    :global(.dark) .physical-label {
+        color: #94a3b8;
     }
 
     .stat-divider {
@@ -299,11 +328,19 @@
         background: #e2e8f0;
     }
 
+    :global(.dark) .stat-divider {
+        background: #475569;
+    }
+
     .section-title {
         font-size: 1.125rem;
         font-weight: 700;
         color: #1e293b;
         margin: 0 0 1rem;
+    }
+
+    :global(.dark) .section-title {
+        color: #f1f5f9;
     }
 
     .stats-section {
@@ -325,11 +362,19 @@
         margin: 0;
     }
 
+    :global(.dark) .description-text {
+        color: #cbd5e1;
+    }
+
     .pokemon-nav {
         display: flex;
         justify-content: space-between;
         padding-top: 1rem;
         border-top: 1px solid #e2e8f0;
+    }
+
+    :global(.dark) .pokemon-nav {
+        border-top-color: #475569;
     }
 
     .nav-button {
@@ -342,9 +387,19 @@
         transition: all 0.2s;
     }
 
+    :global(.dark) .nav-button {
+        background: rgba(15, 23, 42, 0.5);
+        color: #cbd5e1;
+    }
+
     .nav-button:hover {
         background: #e2e8f0;
         color: #1e293b;
+    }
+
+    :global(.dark) .nav-button:hover {
+        background: rgba(15, 23, 42, 0.8);
+        color: #f1f5f9;
     }
 
     /* Error Page */
@@ -353,7 +408,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #f8fafc;
+        background: var(--bg-primary);
     }
 
     .error-content {
@@ -364,12 +419,12 @@
     .error-title {
         font-size: 1.5rem;
         font-weight: 700;
-        color: #1e293b;
+        color: var(--text-primary);
         margin-bottom: 0.5rem;
     }
 
     .error-message {
-        color: #64748b;
+        color: var(--text-secondary);
         margin-bottom: 1.5rem;
     }
 

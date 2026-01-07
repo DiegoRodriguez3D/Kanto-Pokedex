@@ -1,5 +1,7 @@
 <script lang="ts">
     import PokemonCard from "$lib/components/PokemonCard.svelte";
+    import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+    import SearchBar from "$lib/components/SearchBar.svelte";
     import type { PokemonListItem } from "$lib/api";
 
     interface Props {
@@ -10,6 +12,27 @@
     }
 
     let { data }: Props = $props();
+
+    // Search state
+    let searchQuery = $state("");
+
+    // Filter Pokemon based on search query
+    const filteredPokemon = $derived(
+        data.pokemon.filter(
+            (pokemon) =>
+                pokemon.name
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                pokemon.id.toString().includes(searchQuery) ||
+                pokemon.types.some((type) =>
+                    type.toLowerCase().includes(searchQuery.toLowerCase()),
+                ),
+        ),
+    );
+
+    function handleSearch(value: string) {
+        searchQuery = value;
+    }
 </script>
 
 <svelte:head>
@@ -20,10 +43,25 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <h1 class="title">
-                Kanto <span class="title-highlight">Pokédex</span>
-            </h1>
-            <p class="subtitle">Explore all 151 original Pokémon</p>
+            <div class="header-top">
+                <div class="header-spacer"></div>
+                <div class="title-section">
+                    <h1 class="title">
+                        Kanto <span class="title-highlight">Pokédex</span>
+                    </h1>
+                    <p class="subtitle">Explore all 151 original Pokémon</p>
+                </div>
+                <div class="header-actions">
+                    <ThemeToggle />
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            {#if data.pokemon.length > 0}
+                <div class="search-section">
+                    <SearchBar value={searchQuery} onInput={handleSearch} />
+                </div>
+            {/if}
         </div>
     </header>
 
@@ -43,9 +81,25 @@
                 <div class="loading-spinner"></div>
                 <p class="loading-text">Loading Pokémon...</p>
             </div>
+        {:else if filteredPokemon.length === 0}
+            <div class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <h2 class="no-results-title">No Pokémon found</h2>
+                <p class="no-results-message">
+                    Try searching with a different name, ID, or type.
+                </p>
+            </div>
         {:else}
+            <div class="results-info">
+                {#if searchQuery}
+                    <p>
+                        Showing {filteredPokemon.length} of {data.pokemon
+                            .length} Pokémon
+                    </p>
+                {/if}
+            </div>
             <div class="pokemon-grid">
-                {#each data.pokemon as pokemon (pokemon.id)}
+                {#each filteredPokemon as pokemon (pokemon.id)}
                     <PokemonCard {pokemon} />
                 {/each}
             </div>
@@ -72,8 +126,12 @@
     }
 
     .header {
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-        padding: 2rem 1rem;
+        background: linear-gradient(
+            135deg,
+            var(--header-gradient-start) 0%,
+            var(--header-gradient-end) 100%
+        );
+        padding: 1.5rem 1rem 2rem;
         text-align: center;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
@@ -81,6 +139,26 @@
     .header-content {
         max-width: 1400px;
         margin: 0 auto;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .header-spacer {
+        width: 40px;
+    }
+
+    .title-section {
+        flex: 1;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
     }
 
     .title {
@@ -101,12 +179,24 @@
         font-size: 1.125rem;
     }
 
+    .search-section {
+        display: flex;
+        justify-content: center;
+    }
+
     .main-content {
         flex: 1;
         max-width: 1400px;
         margin: 0 auto;
         padding: 2rem 1rem;
         width: 100%;
+    }
+
+    .results-info {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
     }
 
     .pokemon-grid {
@@ -148,12 +238,12 @@
     .error-title {
         font-size: 1.5rem;
         font-weight: 700;
-        color: #1e293b;
+        color: var(--text-primary);
         margin: 0 0 0.5rem;
     }
 
     .error-message {
-        color: #64748b;
+        color: var(--text-secondary);
         margin-bottom: 1.5rem;
     }
 
@@ -184,7 +274,7 @@
     .loading-spinner {
         width: 48px;
         height: 48px;
-        border: 4px solid #e2e8f0;
+        border: 4px solid var(--border-color);
         border-top-color: #ef4444;
         border-radius: 50%;
         animation: spin 1s linear infinite;
@@ -198,17 +288,39 @@
     }
 
     .loading-text {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 1.125rem;
+    }
+
+    /* No Results State */
+    .no-results {
+        text-align: center;
+        padding: 4rem 1rem;
+    }
+
+    .no-results-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    .no-results-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .no-results-message {
+        color: var(--text-secondary);
     }
 
     /* Footer */
     .footer {
         text-align: center;
         padding: 1.5rem 1rem;
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 0.875rem;
-        border-top: 1px solid #e2e8f0;
+        border-top: 1px solid var(--border-color);
     }
 
     .footer a {
