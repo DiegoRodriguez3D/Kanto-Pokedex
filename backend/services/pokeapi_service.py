@@ -29,7 +29,7 @@ class PokeAPIService:
         self.client: Optional[httpx.AsyncClient] = None
     
     async def _get_client(self) -> httpx.AsyncClient:
-        """Get or create HTTP client."""
+        """Lazy-initialize and return HTTP client."""
         if self.client is None:
             self.client = httpx.AsyncClient(
                 base_url=POKEAPI_BASE_URL,
@@ -38,13 +38,12 @@ class PokeAPIService:
         return self.client
     
     async def close(self) -> None:
-        """Close the HTTP client."""
+        """Cleanup HTTP client on shutdown."""
         if self.client:
             await self.client.aclose()
             self.client = None
     
     async def _fetch_pokemon_basic(self, url: str) -> Optional[dict]:
-        """Fetch basic Pokemon data from a URL."""
         try:
             client = await self._get_client()
             response = await client.get(url)
@@ -54,15 +53,7 @@ class PokeAPIService:
             return None
     
     async def get_pokemon_list(self, limit: int = 151) -> list[PokemonListItem]:
-        """
-        Get list of Pokemon with basic info for grid display.
-        
-        Args:
-            limit: Number of Pokemon to fetch (default: 151 for Gen 1)
-            
-        Returns:
-            List of PokemonListItem objects
-        """
+        """Fetch list of Pokemon for grid display. Cached for 1 hour."""
         cache_key = f"pokemon_list_{limit}"
         
         # Check cache first
@@ -105,15 +96,7 @@ class PokeAPIService:
         return pokemon_list
     
     async def get_pokemon_detail(self, pokemon_id: int) -> Optional[PokemonDetail]:
-        """
-        Get detailed information about a specific Pokemon.
-        
-        Args:
-            pokemon_id: The Pokemon ID
-            
-        Returns:
-            PokemonDetail object or None if not found
-        """
+        """Fetch full Pokemon details including stats and description. Cached for 30 min."""
         cache_key = f"pokemon_detail_{pokemon_id}"
         
         # Check cache first
@@ -177,15 +160,7 @@ class PokeAPIService:
             return None
     
     async def get_evolution_chain(self, pokemon_id: int) -> Optional[EvolutionChain]:
-        """
-        Get the evolution chain for a specific Pokemon.
-        
-        Args:
-            pokemon_id: The Pokemon ID
-            
-        Returns:
-            EvolutionChain object or None if not found
-        """
+        """Fetch evolution chain, filtering to Kanto Pokemon only. Cached for 30 min."""
         cache_key = f"evolution_chain_{pokemon_id}"
         
         # Check cache first
@@ -214,7 +189,6 @@ class PokeAPIService:
             stages: list[EvolutionStage] = []
             
             def parse_chain(chain_node: dict) -> None:
-                """Recursively parse evolution chain nodes."""
                 species_name = chain_node["species"]["name"]
                 # Extract ID from URL
                 species_url = chain_node["species"]["url"]
@@ -262,15 +236,7 @@ class PokeAPIService:
             return None
     
     async def get_multiple_pokemon(self, pokemon_ids: list[int]) -> list[PokemonDetail]:
-        """
-        Get detailed information for multiple Pokemon at once.
-        
-        Args:
-            pokemon_ids: List of Pokemon IDs to fetch
-            
-        Returns:
-            List of PokemonDetail objects
-        """
+        """Fetch multiple Pokemon in parallel for comparison."""
         tasks = [self.get_pokemon_detail(pid) for pid in pokemon_ids]
         results = await asyncio.gather(*tasks, return_exceptions=True)
         
@@ -283,6 +249,5 @@ class PokeAPIService:
         return pokemon_list
 
 
-# Global service instance
 pokeapi_service = PokeAPIService()
 

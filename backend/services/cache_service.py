@@ -10,48 +10,24 @@ class CacheService:
         self._cache: dict[str, tuple[Any, float]] = {}
     
     def get(self, key: str) -> Optional[Any]:
-        """
-        Get a value from cache if it exists and hasn't expired.
-        
-        Args:
-            key: Cache key
-            
-        Returns:
-            Cached value or None if not found/expired
-        """
+        """Get cached value or None if not found/expired."""
         if key not in self._cache:
             return None
         
         value, expiry = self._cache[key]
         if time.time() > expiry:
-            # Cache expired, remove it
             del self._cache[key]
             return None
         
         return value
     
     def set(self, key: str, value: Any, ttl_seconds: int = 3600) -> None:
-        """
-        Set a value in cache with TTL.
-        
-        Args:
-            key: Cache key
-            value: Value to cache
-            ttl_seconds: Time to live in seconds (default: 1 hour)
-        """
+        """Store value with TTL (default: 1 hour)."""
         expiry = time.time() + ttl_seconds
         self._cache[key] = (value, expiry)
     
     def delete(self, key: str) -> bool:
-        """
-        Delete a key from cache.
-        
-        Args:
-            key: Cache key
-            
-        Returns:
-            True if key was deleted, False if not found
-        """
+        """Remove key from cache. Returns True if deleted."""
         if key in self._cache:
             del self._cache[key]
             return True
@@ -62,17 +38,8 @@ class CacheService:
         self._cache.clear()
     
     def has(self, key: str) -> bool:
-        """
-        Check if key exists in cache and hasn't expired.
-        
-        Args:
-            key: Cache key
-            
-        Returns:
-            True if key exists and is valid
-        """
+        """Check if key exists and hasn't expired."""
         return self.get(key) is not None
 
 
-# Global cache instance
 cache = CacheService()

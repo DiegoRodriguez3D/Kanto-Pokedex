@@ -29,6 +29,8 @@ Kanto Pokédex Modern is a full-stack web application that showcases all 151 ori
 - **💫 Glassmorphism UI** - Modern frosted glass effect on detail pages
 - **⚡ Fast Performance** - Server-side caching prevents API overload
 - **🖼️ High-Quality Images** - Official artwork from PokéAPI
+- **⚔️ Pokémon Comparator** - Compare 2-6 Pokémon side by side with detailed stats
+- **🧬 Evolution Chains** - View complete evolution paths with trigger conditions
 
 ### 🛠️ Tech Stack
 
@@ -101,6 +103,8 @@ kanto-pokedex/
 - **Browse** - Scroll through the grid to see all 151 Pokémon
 - **Search** - Type in the search bar to filter by name, ID, or type
 - **View Details** - Click any card to see full stats and description
+- **See Evolutions** - View the complete evolution chain on each Pokémon's detail page
+- **Compare Pokémon** - Navigate to `/compare` to compare up to 6 Pokémon side by side
 - **Navigate** - Use Previous/Next buttons to browse between Pokémon
 - **Toggle Theme** - Click the sun/moon icon to switch themes
 
@@ -122,6 +126,8 @@ Kanto Pokédex Modern es una aplicación web full-stack que muestra los 151 Pok�
 - **💫 Interfaz Glassmorphism** - Efecto moderno de vidrio esmerilado en páginas de detalle
 - **⚡ Alto Rendimiento** - Caché del servidor previene sobrecarga de la API
 - **🖼️ Imágenes de Alta Calidad** - Arte oficial de PokéAPI
+- **⚔️ Comparador de Pokémon** - Compara de 2 a 6 Pokémon lado a lado con estadísticas detalladas
+- **🧬 Cadenas de Evolución** - Visualiza las líneas evolutivas completas con condiciones de evolución
 
 ### 🛠️ Stack Tecnológico
 
@@ -194,6 +200,8 @@ kanto-pokedex/
 - **Explorar** - Desplázate por la cuadrícula para ver los 151 Pokémon
 - **Buscar** - Escribe en la barra de búsqueda para filtrar por nombre, ID o tipo
 - **Ver Detalles** - Haz clic en cualquier tarjeta para ver estadísticas completas y descripción
+- **Ver Evoluciones** - Consulta la cadena evolutiva completa en la página de detalle de cada Pokémon
+- **Comparar Pokémon** - Navega a `/compare` para comparar hasta 6 Pokémon lado a lado
 - **Navegar** - Usa los botones Anterior/Siguiente para navegar entre Pokémon
 - **Cambiar Tema** - Haz clic en el icono de sol/luna para cambiar el tema
 
