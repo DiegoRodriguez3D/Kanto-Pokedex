@@ -2,12 +2,17 @@
     import TypeBadge from "$lib/components/TypeBadge.svelte";
     import StatBar from "$lib/components/StatBar.svelte";
     import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+    import EvolutionChain from "$lib/components/EvolutionChain.svelte";
     import { getTypeGradient } from "$lib/typeColors";
-    import type { PokemonDetail } from "$lib/api";
+    import type {
+        PokemonDetail,
+        EvolutionChain as EvolutionChainType,
+    } from "$lib/api";
 
     interface Props {
         data: {
             pokemon: PokemonDetail | null;
+            evolution: EvolutionChainType | null;
             error: string | null;
         };
     }
@@ -15,6 +20,7 @@
     let { data }: Props = $props();
 
     const pokemon = $derived(data.pokemon);
+    const evolution = $derived(data.evolution);
     const gradient = $derived(pokemon ? getTypeGradient(pokemon.types) : "");
 
     function formatId(id: number): string {
@@ -142,6 +148,11 @@
                         <h2 class="section-title">Description</h2>
                         <p class="description-text">{pokemon.description}</p>
                     </div>
+                {/if}
+
+                <!-- Evolution Chain -->
+                {#if evolution && evolution.chain}
+                    <EvolutionChain chain={evolution.chain} />
                 {/if}
 
                 <!-- Navigation between Pokemon -->

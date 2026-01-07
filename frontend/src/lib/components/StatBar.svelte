@@ -3,9 +3,10 @@
         label: string;
         value: number;
         maxValue?: number;
+        showLabel?: boolean;
     }
 
-    let { label, value, maxValue = 255 }: Props = $props();
+    let { label, value, maxValue = 255, showLabel = true }: Props = $props();
 
     // Calculate percentage (max base stat is around 255)
     const percentage = $derived(Math.min((value / maxValue) * 100, 100));
@@ -23,14 +24,18 @@
 </script>
 
 <div class="stat-row">
-    <span class="stat-label">{label}</span>
+    {#if showLabel}
+        <span class="stat-label">{label}</span>
+    {/if}
     <div class="stat-bar-container">
         <div
             class="stat-bar"
             style="width: {percentage}%; background-color: {barColor};"
         ></div>
     </div>
-    <span class="stat-value">{value}</span>
+    {#if showLabel}
+        <span class="stat-value">{value}</span>
+    {/if}
 </div>
 
 <style>

@@ -52,6 +52,29 @@
                     <p class="subtitle">Explore all 151 original Pokémon</p>
                 </div>
                 <div class="header-actions">
+                    <a href="/compare" class="compare-link">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M16 3h5v5" />
+                            <path d="M8 3H3v5" />
+                            <path d="M21 3l-7 7" />
+                            <path d="M3 3l7 7" />
+                            <path d="M21 21l-7-7" />
+                            <path d="M3 21l7-7" />
+                            <path d="M16 21h5v-5" />
+                            <path d="M8 21H3v-5" />
+                        </svg>
+                        Compare
+                    </a>
                     <ThemeToggle />
                 </div>
             </div>
@@ -159,6 +182,26 @@
     .header-actions {
         display: flex;
         align-items: center;
+        gap: 0.75rem;
+    }
+
+    .compare-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.875rem;
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        transition: background 0.2s;
+    }
+
+    .compare-link:hover {
+        background: rgba(255, 255, 255, 0.3);
     }
 
     .title {

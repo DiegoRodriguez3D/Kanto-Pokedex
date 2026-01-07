@@ -42,3 +42,18 @@ class PokemonListResponse(BaseModel):
     """Response model for pokemon list endpoint."""
     count: int
     pokemon: list[PokemonListItem]
+
+
+class EvolutionStage(BaseModel):
+    """Single stage in an evolution chain."""
+    id: int
+    name: str
+    image: str
+    trigger: str = ""  # e.g., "level-up", "use-item", "trade"
+    min_level: int | None = None
+    trigger_item: str | None = None
+
+
+class EvolutionChain(BaseModel):
+    """Complete evolution chain for a Pokemon."""
+    chain: list[EvolutionStage]

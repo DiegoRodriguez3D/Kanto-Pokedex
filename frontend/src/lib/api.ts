@@ -36,6 +36,23 @@ export interface PokemonListResponse {
     pokemon: PokemonListItem[];
 }
 
+export interface EvolutionStage {
+    id: number;
+    name: string;
+    image: string;
+    trigger: string;
+    min_level: number | null;
+    trigger_item: string | null;
+}
+
+export interface EvolutionChain {
+    chain: EvolutionStage[];
+}
+
+export interface CompareResponse {
+    pokemon: PokemonDetail[];
+}
+
 /**
  * Fetch all 151 Kanto Pokemon for the grid view.
  */
@@ -61,3 +78,36 @@ export async function fetchPokemonDetail(id: number): Promise<PokemonDetail> {
 
     return response.json();
 }
+
+/**
+ * Fetch evolution chain for a specific Pokemon.
+ */
+export async function fetchEvolutionChain(id: number): Promise<EvolutionChain> {
+    const response = await fetch(`${API_BASE_URL}/pokemon/${id}/evolution`);
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch evolution chain: ${response.statusText}`);
+    }
+
+    return response.json();
+}
+
+/**
+ * Compare multiple Pokemon by their IDs.
+ */
+export async function comparePokemon(ids: number[]): Promise<CompareResponse> {
+    const response = await fetch(`${API_BASE_URL}/pokemon/compare`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ids }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to compare Pokemon: ${response.statusText}`);
+    }
+
+    return response.json();
+}
+
