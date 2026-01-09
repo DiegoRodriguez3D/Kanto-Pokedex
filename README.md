@@ -2,23 +2,19 @@
 
 <div align="center">
 
-<img width="1658" height="1240" alt="image" src="https://github.com/user-attachments/assets/c0dd0ecf-fe90-4b92-ab4b-f7efe5546072" />
-
-
-
-**A modern, responsive Pokédex web application for the original 151 Pokémon**
-
 [English](#english) | [Español](#español)
 
 </div>
 
 ---
 
-## English
+## 🇬🇧 English
+
+A modern, responsive Pokédex web application for the original 151 Pokémon
 
 ### 🎯 Overview
 
-Kanto Pokédex Modern is a full-stack web application that showcases all 151 original Pokémon from the Kanto region. Built with modern technologies and a stunning UI/UX design, it offers a premium experience for exploring Pokémon data.
+Kanto Pokédex is a full-stack web application that showcases all 151 original Pokémon from the Kanto region. Built with modern technologies and a stunning UI/UX design, it offers a premium experience for exploring Pokémon data.
 
 ### ✨ Features
 
@@ -74,12 +70,31 @@ kanto-pokedex/
 - **Toggle Theme** - Click the sun/moon icon to switch themes
 
 ---
+### Deployment
 
-## Español
+#### Backend → [Render](https://kanto-pokedex-api-xtpp.onrender.com/docs)
+#### Frontend → [Vercel](https://kanto-pokedex-jade.vercel.app)
+---
+
+### 📄 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+
+**Made with ❤️ using [PokéAPI](https://pokeapi.co/)**
+
+</div>
+
+## 🇪🇸 Español
+
+Una moderna y responsiba Pokédex en formato aplicacción web para los 151 Pokémon originales.
 
 ### 🎯 Descripción
 
-Kanto Pokédex Modern es una aplicación web full-stack que muestra los 151 Pokémon originales de la región de Kanto. Construida con tecnologías modernas y un diseño UI/UX impresionante, ofrece una experiencia premium para explorar datos Pokémon.
+Kanto Pokédex es una aplicación web full-stack que muestra los 151 Pokémon originales de la región de Kanto. Construida con tecnologías modernas y un diseño UI/UX impresionante, ofrece una experiencia premium para explorar datos Pokémon.
 
 ### ✨ Características
 
@@ -136,20 +151,20 @@ kanto-pokedex/
 
 ---
 
-## � Deployment / Despliegue
+## Despliegue
 
 ### Backend → [Render](https://kanto-pokedex-api-xtpp.onrender.com/docs)
 ### Frontend → [Vercel](https://kanto-pokedex-jade.vercel.app)
 ---
 
-## �📄 License / Licencia
+## 📄 Licencia
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License - Ver [LICENCIA](LICENSE) para más detalles.
 
 ---
 
 <div align="center">
 
-**Made with ❤️ using [PokéAPI](https://pokeapi.co/)**
+**Hecho con ❤️ usando [PokéAPI](https://pokeapi.co/)**
 
 </div>
